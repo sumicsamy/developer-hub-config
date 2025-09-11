@@ -116,3 +116,6 @@ data:
               tenantId: ${AZURE_TENANT_ID}
               # organizations:
               #   - \$AZURE_DEVOPS_ORG
+    open-dora:
+      # Point this at your OpenDORA backend URL
+      apiBaseUrl: http://opendora.dora-mock-api.opendora.svc.cluster.local

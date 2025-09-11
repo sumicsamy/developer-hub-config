@@ -39,4 +39,20 @@ data:
       - package: ./dynamic-plugins/dist/backstage-plugin-techdocs-backend-dynamic
         disabled: false
       - package: ./dynamic-plugins/dist/backstage-community-plugin-rbac
-        disabled: false           
+        disabled: false
+      - package: @devoteam-nl/open-dora-backstage-plugin@0.4.0
+        integrity: sha512-/FUmt9aXXzUsoLnSo1eur/Zl8e44Xvsp1P+th3rRJW9D4yHbm11tBQmrqKGq3hvIPrFjFbDBHl2RtZAqmfY2bg==
+        disabled: false
+        pluginConfig:
+          # Front-end wiring: add a page and put it in the sidebar
+          dynamicPlugins:
+            frontend:
+              "@devoteam-nl/open-dora-backstage-plugin":
+                dynamicRoutes:
+                  - path: /open-dora
+                    # If the page isn't the default export, keep this importName:
+                    importName: OpenDoraPluginPage
+                    menuItem:
+                      # Any Backstage icon name works; change to taste
+                      icon: analytics
+                      text: OpenDORA           
