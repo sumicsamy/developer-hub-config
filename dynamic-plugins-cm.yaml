@@ -5,6 +5,8 @@ metadata:
   namespace: developer-hub
 data:
   dynamic-plugins.yaml: |
+    includes:
+    - dynamic-plugins.default.yaml
     plugins:
       - package: ./dynamic-plugins/dist/backstage-plugin-catalog-backend-module-msgraph-dynamic
         disabled: false
@@ -19,11 +21,11 @@ data:
       - package: ./dynamic-plugins/dist/roadiehq-scaffolder-backend-argocd-dynamic
         disabled: false 
       - package: ./dynamic-plugins/dist/backstage-community-plugin-topology
-        disabled: true
+        disabled: false
       - package: ./dynamic-plugins/dist/backstage-plugin-kubernetes-backend-dynamic
-        disabled: true
+        disabled: false
       - package: ./dynamic-plugins/dist/backstage-plugin-kubernetes
-        disabled: true            
+        disabled: false            
       - name: test-fe
         version: v0.0.1
         package: https://github.com/sumicsamy/plugins/raw/refs/heads/main/internal-plugin-test-fe-dynamic-0.1.0.tgz
