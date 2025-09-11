@@ -64,7 +64,7 @@ data:
             realm: openshift-sso
             loginRealm: openshift-sso
             clientId: rhdh-sync
-            clientSecret: ${KEYCLOAK_SYNC_SECRET}
+            clientSecret: ${KEYCLOAK_SYNC_CLIENT_SECRET}
             schedule:
               frequency: PT5M   # sync every 5 minutes
               timeout: PT2M
