@@ -40,7 +40,7 @@ data:
         admin:
           users:
             - name: user:default/sumiranchugh
-            - name: user:default/sumiranchugh_outlook.com
+            - name: user:sumiranchugh_outlook.com
     enabled:
       microsoftGraphOrg: true
       permission: false
