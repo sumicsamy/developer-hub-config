@@ -44,14 +44,13 @@ data:
         disabled: false
       - package: ./dynamic-plugins/dist/backstage-community-plugin-rbac
         disabled: false
-      - package: "@devoteam-nl/open-dora-backstage-plugin@0.4.0"
-        integrity: "sha512-/FUmt9aXXzUsoLnSo1eur/Zl8e44Xvsp1P+th3rRJW9D4yHbm11tBQmrqKGq3hvIPrFjFbDBHl2RtZAqmfY2bg=="
+      - package: oci://quay.io/suchugh/open-dora-plugin:v0.0.1!devoteam-nl-open-dora-backstage-plugin
         disabled: false
         pluginConfig:
           # Front-end wiring: add a page and put it in the sidebar
           dynamicPlugins:
             frontend:
-              "@devoteam-nl/open-dora-backstage-plugin":
+              devoteam-nl.open-dora-backstage-plugin:
                 dynamicRoutes:
                   - path: /open-dora
                     # If the page isn't the default export, keep this importName:

@@ -37,7 +37,7 @@ data:
           users:
             - name: user:default/sumiranchugh
             - name: user:default/sumiranchugh_outlook.com
-            - name: user:default/team_a
+            - name: group:default/team_a
     enabled:
       microsoftGraphOrg: true
       permission: true
