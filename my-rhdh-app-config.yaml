@@ -31,7 +31,7 @@ data:
             userEntityRef: user:default/guest
     signInPage: microsoft
     permission:
-      enabled: false
+      enabled: true
       rbac:
         pluginsWithPermission:
         - catalog
@@ -40,6 +40,7 @@ data:
         admin:
           users:
             - name: user:default/sumiranchugh
+            - name: user:default/sumiranchugh_outlook.com
     enabled:
       microsoftGraphOrg: true
       permission: false
