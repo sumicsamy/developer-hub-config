@@ -1,0 +1,118 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-rhdh-app-config
+  namespace: developer-hub
+data:
+  app-config.yaml: |
+    auth:
+      environment: production
+      providers:
+        oidc:
+          development:
+            clientId: openshift
+            clientSecret: ${KEYCLOAK_OPENSHIFT_CLIENT_SECRET}
+            metadataUrl: https://keycloak-rhsso.apps.sno.neat-monster.com/realms/openshift-sso/.well-known/openid-configuration
+            prompt: auto
+            sessionDuration: { hours: 24 }
+            signIn:
+              dangerouslyAllowSignInWithoutUserInCatalog: true
+        microsoft:
+          production:
+            clientId: ${AZURE_CLIENT_ID}
+            clientSecret: ${AZURE_CLIENT_SECRET}
+            tenantId: ${AZURE_TENANT_ID}
+          development:
+            clientId: ${AZURE_CLIENT_ID}
+            clientSecret: ${AZURE_CLIENT_SECRET}
+            tenantId: ${AZURE_TENANT_ID}
+        guest:
+            dangerouslyAllowOutsideDevelopment: true
+            userEntityRef: user:default/guest
+    signInPage: microsoft
+    permission:
+      enabled: false
+      rbac:
+        pluginsWithPermission:
+        - catalog
+        - scaffolder
+        - permission
+        admin:
+          users:
+            - name: user:default/sumiranchugh
+    enabled:
+      microsoftGraphOrg: true
+      permission: false
+      kubernetes: true
+      techdocs: true   
+    catalog:
+      rules:
+        - allow: [Component, API, Location, Template, Group, User]
+      locations:
+      - target: https://github.com/wangzheng422/red-hat-developer-hub-software-templates/blob/wzh-hack/wzh-data/org.yaml
+        type: url
+        rules:
+          - allow: [Group, User]
+      - target: https://github.com/wangzheng422/red-hat-developer-hub-software-templates/blob/wzh-hack/templates/azure/dotnet-frontend/template.yaml
+        type: url
+        rules:
+          - allow: [Template]   
+      providers:
+        keycloakOrg:
+          default:
+            baseUrl: https://keycloak-rhsso.apps.sno.neat-monster.com
+            realm: openshift-sso
+            loginRealm: openshift-sso
+            clientId: rhdh-sync
+            clientSecret: ${KEYCLOAK_SYNC_SECRET}
+            schedule:
+              frequency: PT5M   # sync every 5 minutes
+              timeout: PT2M
+            userTransformer:
+              name: "username"       
+        microsoftGraphOrg:
+          providerId:
+            clientId: ${AZURE_CLIENT_ID}
+            clientSecret: ${AZURE_CLIENT_SECRET}
+            tenantId: ${AZURE_TENANT_ID}
+            # user:
+            #   filter: accountEnabled eq true and userType eq 'member'
+            userGroupMember:
+              search: '"displayName:team a" OR "displayName:teamb"'
+              # filter: 'startswith(displayName,''team a'') or startswith(displayName,''teamb'')'
+            schedule:
+              frequency: PT1M
+              timeout: PT50M
+        azureDevOps:
+          yourProviderId: # identifies your dataset / provider independent of config changes
+            organization: sumiranchugh
+            project: '*'
+            repository: '*' # this will match all repos 
+            path: /catalog-info.yaml
+            schedule: # optional; same options as in TaskScheduleDefinition
+              # supports cron, ISO duration, "human duration" as used in code
+              frequency: { minutes: 30 }
+              # supports ISO duration, "human duration" as used in code
+              timeout: { minutes: 3 }
+    argocd:
+      appLocatorMethods:
+        - type: 'config'
+          instances:
+            - name: argoInstance1
+              token: "${ARGOCD_AUTH_TOKEN}"
+              url: http://openshift-gitops-server.openshift-gitops.svc.cluster.local      
+    integrations:
+      github:
+      - host: github.com
+        token: ${GITHUB_TOKEN}
+      azure:
+        - host: dev.azure.com
+          credentials:
+            # - personalAccessToken: \${AZURE_DEVOPS_PERSONAL_ACCESS_TOKEN}
+            #   organizations:
+            #     - \$AZURE_DEVOPS_ORG
+            - clientId: ${AZURE_CLIENT_ID}
+              clientSecret: ${AZURE_CLIENT_SECRET}
+              tenantId: ${AZURE_TENANT_ID}
+              # organizations:
+              #   - \$AZURE_DEVOPS_ORG

@@ -1,0 +1,3 @@
+resources:
+  - my-rhdh-app-config.yaml
+  - dynamic-plugins-cm.yaml

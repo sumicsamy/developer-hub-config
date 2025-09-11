@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dynamic-plugins-cm
+  namespace: developer-hub
+data:
+  dynamic-plugins.yaml: |
+    includes:
+      - dynamic-plugins.default.yaml
+    plugins:
+      - package: ./dynamic-plugins/dist/backstage-plugin-scaffolder-backend-module-github-dynamic
+        disabled: false
+      - package: ./dynamic-plugins/dist/backstage-community-plugin-catalog-backend-module-keycloak-dynamic
+        disabled: false
+      - package: ./dynamic-plugins/dist/roadiehq-backstage-plugin-argo-cd-backend-dynamic
+        disabled: false
+      - package: ./dynamic-plugins/dist/backstage-community-plugin-redhat-argocd
+        disabled: false 
+      - package: ./dynamic-plugins/dist/roadiehq-scaffolder-backend-argocd-dynamic
+        disabled: false     
+      - name: test-fe
+        version: v0.0.1
+        package: https://github.com/sumicsamy/plugins/raw/refs/heads/main/internal-plugin-test-fe-dynamic-0.1.0.tgz
+        integrity: sha512-vca4DTB0MMq/nx+j2qIJhSkRhs75dbULMR1odBagOCuSWF/nNbJwK97SUGx0vJ2nEJJ+JRwzQattfY6vmOPX3Q==
+        disabled: false
+        pluginConfig:
+          dynamicPlugins:
+            frontend:
+              internal.plugin-test-fe:
+                  mountPoints: #This is to mount on an new tab.
+                    - mountPoint: entity.page.test-fe/cards
+                      importName: TestFePage
+                  entityTabs:
+                    - path: /test-fe
+                      title: "Test Fe"
+                      mountPoint: entity.page.test-fe
+      - package: ./dynamic-plugins/dist/backstage-plugin-techdocs-backend-dynamic
+        disabled: false
+      - package: ./dynamic-plugins/dist/backstage-community-plugin-rbac
+        disabled: false           
