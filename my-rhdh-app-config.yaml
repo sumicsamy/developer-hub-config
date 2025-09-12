@@ -153,5 +153,5 @@ data:
     extensions:
       installation:
         enabled: true
-        saveToSingleFile
+        saveToSingleFile:
           file: /tmp/installed-extensions.json   
