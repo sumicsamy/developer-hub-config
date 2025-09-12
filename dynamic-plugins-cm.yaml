@@ -38,10 +38,18 @@ data:
                   mountPoints: #This is to mount on an new tab.
                     - mountPoint: entity.page.test-fe/cards
                       importName: TestFePage
+                      config:
+                        layout:
+                          gridColumnEnd:
+                            lg: "span 12"   # full width on large
+                            md: "span 8"    # 2/3 width on medium
+                            xs: "span 12"   # full width on phones
                   entityTabs:
                     - path: /test-fe
                       title: "Test Fe"
                       mountPoint: entity.page.test-fe
+      - package: oci://quay.io/suchugh/sammy-rhdh-plugin:v0.0.1!internal-plugin-sammy-rhdh
+        disabled: true                  
       - package: ./dynamic-plugins/dist/backstage-plugin-techdocs-backend-dynamic
         disabled: false
       - package: ./dynamic-plugins/dist/backstage-community-plugin-rbac
