@@ -152,4 +152,6 @@ data:
       apiBaseUrl: https://opendora-opendora.apps.rosa.rosa-mqkkt.lf4g.p3.openshiftapps.com/
     extensions:
       installation:
-        enabled: true   
+        enabled: true
+        saveToSingleFile
+          file: /tmp/installed-extensions.json   
