@@ -113,8 +113,9 @@ data:
             - url:  https://kubernetes.default.svc
               name: openshift
               authProvider: 'serviceAccount'
-              skipTLSVerify: true 
+              skipTLSVerify: false 
               skipMetricsLookup: true
+              caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
       customResources:
         - group: 'tekton.dev'
           apiVersion: 'v1beta1'
