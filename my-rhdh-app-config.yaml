@@ -150,7 +150,7 @@ data:
               #   - \$AZURE_DEVOPS_ORG
     open-dora:
       # Point this at your OpenDORA backend URL
-      apiBaseUrl: https://opendora-opendora.apps.rosa.rosa-mqkkt.lf4g.p3.openshiftapps.com/
+      apiBaseUrl: https://opendora-opendora.apps.sno.neat-monster.com/
     extensions:
       installation:
         enabled: true

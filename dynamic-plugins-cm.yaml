@@ -8,6 +8,14 @@ data:
     includes:
     - dynamic-plugins.default.yaml
     plugins:
+      - package: ./dynamic-plugins/dist/backstage-plugin-scaffolder-backend-module-azure-dynamic
+        disabled: false
+      # Azure Devops
+      - package: ./dynamic-plugins/dist/backstage-community-plugin-azure-devops
+        disabled: false
+      # Azure Devops
+      - package: ./dynamic-plugins/dist/backstage-community-plugin-azure-devops-backend-dynamic
+        disabled: false
       - package: ./dynamic-plugins/dist/backstage-plugin-catalog-backend-module-msgraph-dynamic
         disabled: false
       - package: ./dynamic-plugins/dist/backstage-plugin-scaffolder-backend-module-github-dynamic
