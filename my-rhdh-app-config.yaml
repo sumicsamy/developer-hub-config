@@ -71,6 +71,9 @@ data:
             tenantId: ${AZURE_TENANT_ID}
             # user:
             #   filter: accountEnabled eq true and userType eq 'member'
+            group:
+              filter: "displayName eq 'team a' or displayName eq 'teamb'"
+              includeSubGroups: true
             userGroupMember:
               search: '"displayName:team a" OR "displayName:teamb"'
               # filter: 'startswith(displayName,''team a'') or startswith(displayName,''teamb'')'
