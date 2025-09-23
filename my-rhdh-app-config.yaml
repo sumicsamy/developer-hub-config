@@ -72,10 +72,10 @@ data:
             # user:
             #   filter: accountEnabled eq true and userType eq 'member'
             group:
-              filter: "displayName eq 'team a' or displayName eq 'teamb' or displayName eq 'janus-authors' or displayName eq 'red-hat-developer-hub-authors'"
+              filter: id eq 'd430aa17-2f9d-4f4e-93d5-1350fe816c4c'
               includeSubGroups: true
             userGroupMember:
-              search: '"displayName:team a" OR "displayName:teamb" OR "displayName:janus-authors" OR "displayName:red-hat-developer-hub-authors"'
+              search: '"displayName:team a" OR "displayName:teamb" OR "id:d430aa17-2f9d-4f4e-93d5-1350fe816c4c"'
               # filter: 'startswith(displayName,''team a'') or startswith(displayName,''teamb'')'
             schedule:
               frequency: PT1M
