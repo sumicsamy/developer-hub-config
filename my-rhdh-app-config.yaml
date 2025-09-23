@@ -44,9 +44,9 @@ data:
       kubernetes: true
       techdocs: true   
     catalog:
-      locations:
-      - rules:
+      rules:
         - allow: [Component, API, Resource, System, Domain, Group, User, Location, Template]
+      locations:
       - target: https://dev.azure.com/sumiranchugh/rhdh-ado-project/_git/red-hat-developer-hub-software-templates?path=/templates.yaml
         type: url
         rules:
