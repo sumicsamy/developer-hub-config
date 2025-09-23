@@ -69,6 +69,7 @@ data:
             clientId: ${AZURE_CLIENT_ID}
             clientSecret: ${AZURE_CLIENT_SECRET}
             tenantId: ${AZURE_TENANT_ID}
+            queryMode: advanced
             # Ingest GROUP entities: the root group and all nested groups
             group:
             # Root group + all nested groups (transitive)
