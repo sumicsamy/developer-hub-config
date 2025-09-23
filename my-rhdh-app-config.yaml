@@ -45,6 +45,8 @@ data:
       techdocs: true   
     catalog:
       locations:
+      - rules:
+        - allow: [Component, API, Resource, System, Domain, Group, User, Location, Template]
       - target: https://dev.azure.com/sumiranchugh/rhdh-ado-project/_git/red-hat-developer-hub-software-templates?path=/templates.yaml
         type: url
         rules:
