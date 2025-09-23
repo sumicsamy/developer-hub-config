@@ -44,17 +44,9 @@ data:
       kubernetes: true
       techdocs: true   
     catalog:
-      rules:
-        - allow: [Component, API, Location, Template, Group, User]
       locations:
-      - target: https://github.com/wangzheng422/red-hat-developer-hub-software-templates/blob/wzh-hack/wzh-data/org.yaml
-        type: url
-        rules:
-          - allow: [Group, User]
-      - target: https://github.com/wangzheng422/red-hat-developer-hub-software-templates/blob/wzh-hack/templates/azure/dotnet-frontend/template.yaml
-        type: url
-        rules:
-          - allow: [Template]   
+      - target: https://dev.azure.com/sumiranchugh/rhdh-ado-project/_git/red-hat-developer-hub-software-templates?path=/templates.yaml
+        type: url  
       providers:
         keycloakOrg:
           default:
@@ -89,7 +81,7 @@ data:
             path: /catalog-info.yaml
             schedule: # optional; same options as in TaskScheduleDefinition
               # supports cron, ISO duration, "human duration" as used in code
-              frequency: { minutes: 30 }
+              frequency: { minutes: 3 }
               # supports ISO duration, "human duration" as used in code
               timeout: { minutes: 3 }
 
