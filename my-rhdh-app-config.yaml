@@ -46,7 +46,9 @@ data:
     catalog:
       locations:
       - target: https://dev.azure.com/sumiranchugh/rhdh-ado-project/_git/red-hat-developer-hub-software-templates?path=/templates.yaml
-        type: url  
+        type: url
+        rules:
+        - allow: [Component, API, Resource, System, Domain, Group, User, Location, Template]
       providers:
         keycloakOrg:
           default:
@@ -85,17 +87,17 @@ data:
               # supports ISO duration, "human duration" as used in code
               timeout: { minutes: 3 }
 
-        kubernetes:
-          openshift:
-            cluster: openshift
-            processor:
-              namespaceOverride: default
-              defaultOwner: guests
-            schedule:
-              frequency:
-                seconds: 30
-              timeout:
-                seconds: 5
+        # kubernetes:
+        #   openshift:
+        #     cluster: openshift
+        #     processor:
+        #       namespaceOverride: default
+        #       defaultOwner: guests
+        #     schedule:
+        #       frequency:
+        #         seconds: 30
+        #       timeout:
+        #         seconds: 5
     kubernetes:
       serviceLocatorMethod:
         type: 'multiTenant'
