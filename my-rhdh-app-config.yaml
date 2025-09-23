@@ -69,13 +69,18 @@ data:
             clientId: ${AZURE_CLIENT_ID}
             clientSecret: ${AZURE_CLIENT_SECRET}
             tenantId: ${AZURE_TENANT_ID}
-            # user:
-            #   filter: accountEnabled eq true and userType eq 'member'
+            # Ingest GROUP entities: the root group and all nested groups
             group:
-              filter: id eq 'd430aa17-2f9d-4f4e-93d5-1350fe816c4c'
-              includeSubGroups: true
-            userGroupMember:
-              search: '"displayName:team a" OR "displayName:teamb" OR "id:d430aa17-2f9d-4f4e-93d5-1350fe816c4c"'
+            # Root group + all nested groups (transitive)
+              path: /groups/d430aa17-2f9d-4f4e-93d5-1350fe816c4c/transitiveMembers/microsoft.graph.group
+              includeSubGroups: true   # harmless here; path already returns nested groups
+
+            # Ingest USER entities: all users who are transitive members of that root group
+            user:
+              path: /groups/d430aa17-2f9d-4f4e-93d5-1350fe816c4c/transitiveMembers/microsoft.graph.user
+
+            #userGroupMember:
+              #search: '"displayName:team a" OR "displayName:teamb" OR "id:d430aa17-2f9d-4f4e-93d5-1350fe816c4c"'
               # filter: 'startswith(displayName,''team a'') or startswith(displayName,''teamb'')'
             schedule:
               frequency: PT1M
