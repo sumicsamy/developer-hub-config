@@ -72,10 +72,10 @@ data:
             # user:
             #   filter: accountEnabled eq true and userType eq 'member'
             group:
-              filter: "displayName eq 'team a' or displayName eq 'teamb'"
+              filter: "displayName eq 'team a' or displayName eq 'teamb' or displayName eq 'janus-authors' or displayName eq 'red-hat-developer-hub-authors'"
               includeSubGroups: true
             userGroupMember:
-              search: '"displayName:team a" OR "displayName:teamb"'
+              search: '"displayName:team a" OR "displayName:teamb" OR "displayName:janus-authors" OR "displayName:red-hat-developer-hub-authors"'
               # filter: 'startswith(displayName,''team a'') or startswith(displayName,''teamb'')'
             schedule:
               frequency: PT1M
