@@ -1,4 +1,4 @@
 resources:
-  - my-rhdh-app-config.yaml
-  - dynamic-plugins-cm.yaml
+  - acme-app-config.yaml
+  - acme-dynamic-plugins-cm.yaml
   - backstage-readonly-cr.yaml

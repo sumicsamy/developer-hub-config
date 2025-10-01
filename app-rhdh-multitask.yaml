@@ -1,0 +1,47 @@
+# app-config.yaml (CONSUMER HUB)
+app:
+  title: Consumer Developer Hub
+  baseUrl: https://rhdh-config.apps.sno.neat-monster.com/
+
+backend:
+  baseUrl: https://rhdh-config.apps.sno.neat-monster.com/
+  listen:
+    port: 7007
+
+  # Share the same key with the Host so the Consumer can mint/forward
+  # Backstage tokens that the Host will accept.
+  auth:
+    keys:
+      - secret: pl4s3Ch4ng3M3
+    providers:
+      guest:
+        dangerouslyAllowOutsideDevelopment: true
+        userEntityRef: user:default/guest  
+
+  # discoveryService tells the Consumer where each remote backend lives.
+  discovery:
+    endpoints:
+      # The ids here are arbitrary labels you’ll reference below.
+      kubernetes:
+        url: https://rhdh.apps.sno.neat-monster.com/api/kubernetes
+      argocd:
+        url: https://rhdh.apps.sno.neat-monster.com/api/argocd
+      azure-devops:
+        url: https://rhdh.apps.sno.neat-monster.com/api/azure-devops
+      permission:
+        url: https://rhdh.apps.sno.neat-monster.com/api/permission
+
+  # Tell the Consumer to route plugin calls to the discovery targets above.
+  # (This is the important bit.)
+  plugins:
+    kubernetes:
+      target: discovery:kubernetes
+    argocd:
+      target: discovery:argocd
+    azure-devops:
+      target: discovery:azure-devops
+    permission:
+      target: discovery:permission
+
+
+
