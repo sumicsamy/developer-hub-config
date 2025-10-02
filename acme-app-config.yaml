@@ -19,20 +19,20 @@ data:
         description: 'Learn the basics of navigating the Developer Hub interface'
         icon: 'home'
         cta:
-        text: 'Get Started'
-        link: '/catalog'
+          text: 'Get Started'
+          link: '/catalog'
       - title: 'Create Your First Component'
         description: 'Follow our guide to register your first software component'
         icon: 'code'
         cta:
-        text: 'Create Component'
-        link: '/catalog-import'
+          text: 'Create Component'
+          link: '/catalog-import'
       - title: 'Explore Templates'
         description: 'Discover available software templates to bootstrap new projects'
         icon: 'template'
         cta:
-        text: 'Browse Templates'
-        link: '/create'  
+          text: 'Browse Templates'
+          link: '/create'  
     auth:
       environment: production
       providers:
