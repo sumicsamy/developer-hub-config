@@ -10,7 +10,7 @@ data:
       baseUrl: https://acme.apps.sno.neat-monster.com
       support:
         email: sumiranchugh@outlook.com
-        link: https://www.acme.com/support
+        url: https://www.acme.com/support
       custom:
         helpPageUrl: https://www.acme.com/help
         aboutPageUrl: https://www.acme.com/about
@@ -72,6 +72,7 @@ data:
       kubernetes: true
       techdocs: true   
     catalog:
+      useUrlReadersSearch: true
       rules:
         - allow: [Component, API, Resource, System, Domain, Group, User, Location, Template]
       locations:
@@ -188,4 +189,20 @@ data:
       installation:
         enabled: true
         saveToSingleFile:
-          file: /tmp/installed-extensions.json   
+          file: /tmp/installed-extensions.json
+    events:
+      http:
+        enabled: true
+        basePath: /events
+    techdocs:
+      builder: 'local'
+      publisher:
+        type: 'local'
+    search:
+      collators:
+        techdocs:
+          enabled: true
+          schedule:
+            frequency: { minutes: 30 }
+            initialDelay: { seconds: 20 }
+            timeout: { minutes: 5 }       
