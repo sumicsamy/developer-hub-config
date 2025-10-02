@@ -5,6 +5,34 @@ metadata:
   namespace: acme-developer-hub
 data:
   app-config.yaml: |
+    app:
+      title: ACME Developer Hub (Production)
+      baseUrl: https://acme.apps.sno.neat-monster.com
+      support:
+        email: sumiranchugh@outlook.com
+        link: https://www.acme.com/support
+      custom:
+        helpPageUrl: https://www.acme.com/help
+        aboutPageUrl: https://www.acme.com/about
+      quickstart:
+      - title: 'Welcome to ACME Developer Hub'
+        description: 'Learn the basics of navigating the Developer Hub interface'
+        icon: 'home'
+        cta:
+        text: 'Get Started'
+        link: '/catalog'
+      - title: 'Create Your First Component'
+        description: 'Follow our guide to register your first software component'
+        icon: 'code'
+        cta:
+        text: 'Create Component'
+        link: '/catalog-import'
+      - title: 'Explore Templates'
+        description: 'Discover available software templates to bootstrap new projects'
+        icon: 'template'
+        cta:
+        text: 'Browse Templates'
+        link: '/create'  
     auth:
       environment: production
       providers:
