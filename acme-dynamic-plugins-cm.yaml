@@ -33,10 +33,7 @@ data:
       - package: ./dynamic-plugins/dist/backstage-plugin-kubernetes-backend-dynamic
         disabled: false
       - package: ./dynamic-plugins/dist/backstage-plugin-kubernetes
-        disabled: false
-      - package: "@backstage/plugin-events-backend"
-        pluginConfig: {}
-        disabled: false             
+        disabled: false            
       - name: test-fe
         version: v0.0.1
         package: https://github.com/sumicsamy/plugins/raw/refs/heads/main/internal-plugin-test-fe-dynamic-0.1.0.tgz
