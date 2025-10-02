@@ -8,14 +8,6 @@ data:
     app:
       title: ACME Developer Hub (Production)
       baseUrl: https://acme.apps.sno.neat-monster.com
-      support:
-        items:
-          - title: "Support"
-            links:
-              - title: "Support portal"
-                url: "https://www.acme.com/support"
-              - title: "Email support"
-                url: "mailto:sumiranchugh@outlook.com"
       custom:
         helpPageUrl: https://www.acme.com/help
         aboutPageUrl: https://www.acme.com/about
