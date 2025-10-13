@@ -20,7 +20,7 @@ data:
     p, role:default/sre-min, scaffolder-template, read, allow
     p, role:default/sre-min, scaffolder-task, read, allow
 
-    # Regular users: read + can "use" templates
+    # Regular users: read + can use templates
     p, role:default/user, catalog-entity, read, allow
     p, role:default/user, techdocs, read, allow
     p, role:default/user, scaffolder-template, use, allow
