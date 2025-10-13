@@ -61,11 +61,9 @@ data:
     permission:
       enabled: true
       rbac:
-        admin:
-          users:
-            - name: user:default/sumiranchugh
-            - name: user:default/sumiranchugh_outlook.com
-            - name: group:default/team_a
+        policies-csv-file: /opt/app-root/src/rbac-policies.csv
+        conditionalPoliciesFile: /opt/app-root/src/rbac-conditional-policies.yaml
+        policyFileReload: true
     enabled:
       microsoftGraphOrg: true
       permission: true

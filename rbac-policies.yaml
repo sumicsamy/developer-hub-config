@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rbac-policies
+  namespace: acme-developer-hub
+data:
+  # ------------------------------
+  # 1) Role & binding CSV
+  # ------------------------------
+  rbac-policies.csv: |
+    # ---- Roles → permissions ----
+    # p, <role>, <permission or resource-type>, <action>, <allow|deny>
+
+    # Admins: everything
+    p, role:default/admin, *, *, allow
+
+    # SRE minimum: platform read-only (catalog, techdocs, templates, tasks)
+    p, role:default/sre-min, catalog-entity, read, allow
+    p, role:default/sre-min, techdocs, read, allow
+    p, role:default/sre-min, scaffolder-template, read, allow
+    p, role:default/sre-min, scaffolder-task, read, allow
+
+    # Regular users: read + can "use" templates
+    p, role:default/user, catalog-entity, read, allow
+    p, role:default/user, techdocs, read, allow
+    p, role:default/user, scaffolder-template, use, allow
+    p, role:default/user, scaffolder-task, read, allow
+
+
+    # ---- Group → role bindings ---
+    # g, <group|user>, <role>
+
+    # Entra ID mapped groups (examples; replace with yours)
+    g, group:default/janus-authors,   role:default/admin
+    g, group:default/rhdh-devhub-sre,     role:default/sre-min
+    g, group:default/team_a, role:default/user
+    g, group:default/teamb, role:default/user
+
+
+  # ------------------------------
+  # 2) Conditional policy YAML
+  # ------------------------------
+  rbac-conditional-policies.yaml: |
+    # Limit Team A’s stronger privileges (read/update/delete) to ONLY entities they own.
+    # Uses the catalog plugin’s IS_ENTITY_OWNER rule and the $ownerRefs alias so
+    # both the user and their parent groups count as owners.
+    - result: CONDITIONAL
+      roleEntityRef: role:default/user
+      pluginId: catalog
+      resourceType: catalog-entity
+      permissionMapping: ["read", "update", "delete"]
+      conditions:
+        rule: IS_ENTITY_OWNER
+        resourceType: catalog-entity
+        params:
+          claims: ["$ownerRefs"]
