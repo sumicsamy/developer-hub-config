@@ -12,10 +12,14 @@ data:
     # p, <role>, <permission or resource-type>, <action>, <allow|deny>
 
     # SRE minimum: platform read-only (catalog, techdocs, templates, tasks)
-    p, role:default/sre-min, catalog-entity, read, allow
-    p, role:default/sre-min, techdocs, read, allow
-    p, role:default/sre-min, scaffolder-template, read, allow
-    p, role:default/sre-min, scaffolder-task, read, allow
+    p, role:default/sre-min, catalog-entity, read, deny
+    p, role:default/sre-min, techdocs, read, deny
+    p, role:default/sre-min, scaffolder-template, read, deny
+    p, role:default/sre-min, scaffolder-template, use, deny
+    p, role:default/sre-min, scaffolder-task, read, deny
+    p, role:default/sre-min, policy-entity, read, deny
+    p, role:default/sre-min, search, read, deny
+    p, role:default/sre-min, search, use, deny
 
     # Regular users: read + can use templates
     p, role:default/user, catalog-entity, read, allow
