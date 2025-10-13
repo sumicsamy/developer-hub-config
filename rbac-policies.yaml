@@ -11,9 +11,6 @@ data:
     # ---- Roles → permissions ----
     # p, <role>, <permission or resource-type>, <action>, <allow|deny>
 
-    # Admins: everything
-    p, role:default/admin, *, *, allow
-
     # SRE minimum: platform read-only (catalog, techdocs, templates, tasks)
     p, role:default/sre-min, catalog-entity, read, allow
     p, role:default/sre-min, techdocs, read, allow
@@ -31,7 +28,6 @@ data:
     # g, <group|user>, <role>
 
     # Entra ID mapped groups (examples; replace with yours)
-    g, group:default/janus-authors,   role:default/admin
     g, group:default/rhdh-devhub-sre,     role:default/sre-min
     g, group:default/team_a, role:default/user
     g, group:default/teamb, role:default/user

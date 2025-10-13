@@ -61,6 +61,9 @@ data:
     permission:
       enabled: true
       rbac:
+        admin:
+          users:
+            - name: group:default/janus-authors
         policies-csv-file: /opt/app-root/src/rbac-policies.csv
         conditionalPoliciesFile: /opt/app-root/src/rbac-conditional-policies.yaml
         policyFileReload: true
