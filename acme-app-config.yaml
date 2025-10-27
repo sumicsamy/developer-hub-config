@@ -184,7 +184,7 @@ data:
               #   - \$AZURE_DEVOPS_ORG
     open-dora:
       # Point this at your OpenDORA backend URL
-      apiBaseUrl: https://opendora-opendora.apps.sno.neat-monster.com/
+      apiBaseUrl: http://opendora.opendora.svc.cluster.local:10666
     extensions:
       installation:
         enabled: true
