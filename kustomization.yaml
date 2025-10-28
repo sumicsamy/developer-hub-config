@@ -1,5 +1,4 @@
 resources:
   - acme-app-config.yaml
   - acme-dynamic-plugins-cm.yaml
-  - backstage-readonly-cr.yaml
   - rbac-policies.yaml
