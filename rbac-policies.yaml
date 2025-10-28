@@ -26,6 +26,7 @@ data:
     p, role:default/user, techdocs, read, allow
     p, role:default/user, scaffolder-template, use, allow
     p, role:default/user, scaffolder-task, read, allow
+    p, role:default/user, adoption-insights.events.read, read, allow
 
 
     # ---- Group → role bindings ---
